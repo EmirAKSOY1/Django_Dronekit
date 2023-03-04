@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>EBABİLTEK</title>
+    <link rel="icon" href="{% static 'eba.png' %}" type="image/x-icon" />
+    <style type="text/css">
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+          }
+          .koor{
+            font-size: .500em;
+          }
+          /* Control the left side */
+          .left {
+            left: 0;
+            background-color: aliceblue;
+          }
+          
+          /* Control the right side */
+          .right {
+            right: 0;
+            
+          }
+          
+          /* If you want the content centered horizontally and vertically */
+          .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+          }
+          
+          /* Style the image inside the centered container, if needed */
+          .centered img {
+            width: 150px;
+            border-radius: 50%;
+          }
+          .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            background-color:#142c6c;
+            padding: 10px;
+            width:100%;
+            height: 100%;
+          }
+          .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+          }
+
+    </style>
+</head>
+<body>
+    <div class="split left">
+        <div class="centered">
+            <div class="container">
+                <div class="row" style="height: 335px;">
+                    <video width="100%" height="100%" controls="controls" >
+ 
+                        <source src="static/yol.mp4" type="video/mp4">
+                        
+                        
+                        
+                       Tarayıcınız video etiketini desteklemiyor.
+                       
+                       </video>
+                        
+                </div>
+                <hr width="800" size="4" align="right">
+                <div class="row" style="height: 450px;">
+                  <div class="grid-container">
+                    <div class="grid-item">
+                      Pil:{{pil}}%
+                    </div>
+                    <div class="grid-item">
+                      Hız:{{hiz}} m/s
+                    </div>
+                    
+                    <div class="grid-item">
+                      Mod:{{mod}}
+                    </div>  
+                    <div class="grid-item">
+                    İrtifa:
+                    <br/>
+                    {{irtifa}} M 
+                    </div>
+                    <div class="grid-item">
+                      Heading:
+                      <br/>
+                      {{heading}}°
+                    </div>
+                    <div class="grid-item">
+                      <p>Kooardinat </p>
+                      <small class="koor" >Lat: {{lat}} </small>
+                      <br />
+                      <small class="koor">Long: {{long}} </small>
+                    </div>  
+                    <div class="grid-item">
+                      <button type="button" class="btn btn-warning" style="width:100%;height:100%">Eve Dön</button>
+                    </div>
+                    
+                    <div class="grid-item">
+                      <button type="button" class="btn btn-success" style="width:100%;height:100%">Kalkış</button>
+                    </div>
+                    <div class="grid-item">
+                      <button type="button" class="btn btn-danger" style="width:100%;height:100%">Acil iniş</button>
+                    </div>  
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    <div class="split right">
+        <div class="centered">
+          
+            {{kooardinat |safe}}
+        </div>
+    </div>
+</body>
+</html>
